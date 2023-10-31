@@ -202,7 +202,7 @@ function procesarHandles(msg) {
   }  
 }
 
-function start(url) {
+function start(url=`${window.location.origin.replace("http","ws")}/tic-tac-toe`) {
   const ws = new WebSocket(url);
   ws.onmessage = ({data})=>{
     const { type, msg } = JSON.parse(data);
@@ -252,6 +252,8 @@ function start(url) {
 window.start = (p)=>{
   start(p)
 }
+
+start()
 
 // window.handleHello = (msg)=>{
 //   handleHello(msg);
